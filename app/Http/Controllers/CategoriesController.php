@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Salesfly\Salesfly\Repositories\CategoryRepo;
 use Salesfly\Salesfly\Managers\CategoryManager;
 
-class CategoriesController extends Controller {
+class CategoriesController extends Controller {//Te Quiero Mucho
 
     protected $categoryRepo;
 

@@ -12,3 +12,4 @@
 # .add
 Homestead.yaml
 .env
+.gitignore
