@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>CyR | @section('module')Dashboard @show</title>
+    <title>UDL | @section('module')Dashboard @show</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
@@ -47,9 +47,9 @@
         <!-- Logo -->
         <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>Cy</b>R</span>
+          <span class="logo-mini"><b>UDL</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>CyR</b>Telecomunicaciones</span>
+          <span class="logo-lg">Univ. de Lambayeque </span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -92,7 +92,7 @@
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                  <!--<li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>
                     </div>
-                  </li>
+                  </li>-->
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
@@ -141,10 +141,10 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">Navegación</li>
-            @if($role == 1)
+            @if($role == 1|| $role == 2|| $role == 3)
             <li><a href="/"><i class="fa fa-home"></i> <span>Home</span></a></li>
             @endif
-            @if($role == 1)
+            <!--@if($role == 1|| $role == 2|| $role == 3)
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-wrench"></i>
@@ -152,107 +152,30 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class=""><a href="/users" ><i class="fa fa-circle-o"></i>Usuarios</a></li>
+                <!--<li class=""><a href="/users" ><i class="fa fa-circle-o"></i>Usuarios</a></li>
                 <li class=""><a href="" ><i class="fa fa-circle-o"></i>Empleados</a></li>
                   <li><a href="/stores"><i class="fa fa-circle-o"></i>Tienda </a></li>
-                <li><a href="/warehouses"><i class="fa fa-circle-o"></i>Almacenes </a></li>
-              </ul>
+                <li><a href="/warehouses"><i class="fa fa-circle-o"></i>Almacenes </a></li>-->
+              <!--</ul>
             </li>
-            @endif
-            @if($role == 1 || $role == 3)
+            @endif-->
+            @if($role == 1|| $role == 2|| $role == 3)
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-barcode"></i>
-                <span>Productos</span>
+                <span>Carga Lectiva</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                @if($role == 1 || $role == 3)
-                <li class=""><a href="/products" ><i class="fa fa-circle-o"></i>Productos</a></li>
-                @endif
-                  @if($role == 1)
-                <li class=""><a href="/purchases" ><i class="fa fa-circle-o"></i>Control de Stock</a></li>
-                <li class=""><a href="/brands" ><i class="fa fa-circle-o"></i>Marcas</a></li>
-                <li><a href="/types"><i class="fa fa-circle-o"></i>Líneas </a></li>
-                <li><a href="/materials"><i class="fa fa-circle-o"></i>Materiales </a></li>
-                <li><a href="/stations"><i class="fa fa-circle-o"></i>Estaciones </a></li>
-                <li><a href="/atributes"><i class="fa fa-circle-o"></i>Atributos </a></li>
-                <li><a href="/suppliers"><i class="fa fa-circle-o"></i>Proveedores </a></li>
-                    @endif
+                <li class=""><a href="/asignarcarga" ><i class="fa fa-circle-o"></i>Asignar cursos</a></li>
+                <li><a href="/carga"><i class="fa fa-circle-o"></i>Asignar Carga</a></li>
               </ul>
             </li>
             @endif
-            @if($role == 1 || $role == 2)
-            <li class="">
-                          <a href="/sales/create">
-                            <i class="fa fa-shopping-cart"></i> <span>Vender!</span>
-                          </a>
-             </li>
-            @endif
-              @if($role == 1 || $role == 2)
-             <li class="">
-                          <a href="/separateSales/create">
-                            <i class="fa fa-shopping-cart"></i> <span>Pedid./Separ.</span>
-                          </a>
-             </li>
-            @endif
-            @if($role == 1 || $role == 2)
-            <li class="">
-              <a href="/sales">
-                <i class="fa fa-list-ol"></i> <span>Lista de Ventas en Total</span>
-              </a>
-            </li>
-            @endif
-            @if($role == 1 || $role == 2)
-            <li class="">
-              <a href="/separateSales">
-                <i class="fa fa-list-ol"></i> <span>Lista de Ped/Sep en Total</span>
-              </a>
-            </li>
-            @endif
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calculator"></i>
-                <span>Cajas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                @if($role == 1)
-                <li class=""><a href="/cashHeaders" ><i class="fa fa-circle-o"></i>Cajas</a></li>
-                <li class=""><a href="/cashMonthlys" ><i class="fa fa-circle-o"></i>Gastos de Caja Mensual</a></li>
-                @endif
-                  @if($role == 1 || $role == 2)
-                <li class=""><a href="/cashes" ><i class="fa fa-circle-o"></i>Ver Cajas Abiertas</a></li>
-                    @endif
 
-              </ul>
-            </li>
-            @if($role == 1)
-            <li class="">
-              <a href="/customers">
-                <i class="fa fa-users"></i> <span>Clientes</span>
-              </a>
-            </li>
-            @endif
-            @if($role == 1)
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-bar-chart-o"></i>
-                <span>Reportes</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="/sales" ><i class="fa fa-circle-o"></i>Reporte de Ventas</a></li>
-                <li class=""><a href="/purchases/cardex#detCajas" ><i class="fa fa-circle-o"></i>Reporte detalles caja</a></li>
-                <li><a href="/separateSales"><i class="fa fa-circle-o"></i>Reporte de Seeparados </a></li>
-                <li><a href="/purchases/cardex#PagoProveedores"><i class="fa fa-circle-o"></i>Reporte de Pagos a Proveedores </a></li>
-                <li><a href="/cashes"><i class="fa fa-circle-o"></i>Reporte de Cajas </a></li>
-                <li><a href="/purchases/cardex#mejoresEmplCli"><i class="fa fa-circle-o"></i>Reporte de Mejores Vendedores/clientes </a></li>
-                <li><a href="/purchases/create"><i class="fa fa-circle-o"></i>Reporte de Movimientos de Almacén </a></li>
-                <li><a href="/purchases/cardex#reportProduct"><i class="fa fa-circle-o"></i>Reporte Cardex </a></li>
-              </ul>
-            </li>
-              @endif
+              
+     
+            
 
 
           </ul>
@@ -271,8 +194,8 @@
 
           <section class="content-header">
             <h1>
-              ¡Empezando!
-              <small>Version 2.0</small>
+              ¡Bienvenido!
+              <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
               <li class="active"><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -284,7 +207,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-home"></i> SalesFly</h3>
+                  <h3 class="box-title"><i class="fa fa-home"></i> UDL</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <div class="btn-group">
@@ -303,8 +226,7 @@
                 <div class="box-body">
                   <div class="row">
                     <div class="col-md-8 col-md-offset-0">
-                        <h4>Completa los primeros pasos para poder empezar a descubrir SalesFly o mira el video de la derecha y
-                        aprenda como hacer tu primera venta con los productos de demostración que hemos añadido para usted. </h4>
+                        <h4>Bienvenido al sistema de horarios de la Universidad de Lambayeque</h4>
                     </div>
 
                   </div><!-- /.row -->
@@ -314,22 +236,22 @@
 
                       <div class="box box-default">
                         <div class="box-header with-border">
-                          <h3 class="box-title"> 1. Añade tus productos!  </h3>
+                          <h3 class="box-title"> Asigna Carga Lectiva</h3>
                           <div class="box-tools pull-right">
 
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 
                           </div><!-- /.box-tools -->
-                          <a href="/products/create" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Añade un Producto</a>
+                          <a href="/carga" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Asigna Carga Lectiva</a>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                          Puedes agregar manualmente tus productos. Te hemos puesto productos de ejemplo.
+                          En esta seccion puedes Asigna Carga Lectiva para el semestre actual.
                         </div><!-- /.box-body -->
 
                       </div><!-- /.box -->
                     </div>
                   </div>
-                  <div class="row">
+                  <!--<div class="row">
                     <div class="col-md-10 col-md-offset-1">
 
                       <div class="box box-default collapsed-box">
@@ -340,16 +262,16 @@
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
 
                           </div><!-- /.box-tools -->
-                          <a href="/customers/create" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Añade un Cliente</a>
+                          <!--<a href="/customers/create" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Añade un Cliente</a>
                         </div><!-- /.box-header -->
-                        <div class="box-body">
+                        <!--<div class="box-body">
                           Puedes agregar manualmente tus productos. Te hemos puesto productos de ejemplo.
                         </div><!-- /.box-body -->
 
-                      </div><!-- /.box -->
-                    </div>
+                      <!--</div><!-- /.box -->
+                    <!--</div>
                   </div>
-                  <div class="row">
+                  <!--<div class="row">
                     <div class="col-md-10 col-md-offset-1">
 
                       <div class="box box-default collapsed-box">
@@ -360,15 +282,15 @@
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
 
                           </div><!-- /.box-tools -->
-                          <a href="/employees/create" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Añade un Empleado!</a>
+                          <!--<a href="/employees/create" type="button" class="btn  btn-info btn-flat pull-right btn-sm" style="margin-right: 25px;">Añade un Empleado!</a>
                         </div><!-- /.box-header -->
-                        <div class="box-body">
+                        <!--<div class="box-body">
                           Puedes agregar manualmente tus productos. Te hemos puesto productos de ejemplo.
                         </div><!-- /.box-body -->
 
-                      </div><!-- /.box -->
-                    </div>
-                  </div>
+                      <!--</div><!-- /.box -->
+                    <!--</div>
+                  </div>...-->
                 </div><!-- ./box-body -->
                 <div class="box-footer">
                   <div class="row">
@@ -419,7 +341,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.01
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="#">Salesfly</a>.</strong> Todos los derechos reservados.
+        <strong>Copyright &copy; 2016-2017 <a href="#">Tobal</a>.</strong> Todos los derechos reservados.
       </footer>
 
       <!-- Control Sidebar -->
@@ -633,7 +555,7 @@
     
     
     
-    <script src="/js/app/stations/controllers.js"></script>
+    <!--<script src="/js/app/stations/controllers.js"></script>-->
 
     <script src="/vendor/angular-ui-slider/src/slider.js"></script>
     <!-- endinject -->

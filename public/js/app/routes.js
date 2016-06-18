@@ -5,18 +5,7 @@
             // ------------------------------------------------------
             
                 //---------------------------------------------------
-                .when('/stations', {
-                    templateUrl: '/js/app/stations/views/index.html',
-                    controller: 'StationController'
-                })
-                .when('/stations/create',{
-                    templateUrl:'/stations/form-create',
-                    controller: 'StationController'
-                })
-                .when('/stations/edit/:id',{
-                    templateUrl:'/stations/form-edit',
-                    controller: 'StationController'
-                }) 
+
            // ------------------------------------------------------
                            
                 .when('/persons', {
@@ -43,32 +32,25 @@
                     templateUrl:'/users/form-edit',
                     controller: 'UserController'
                 })
-                //RUTES CATEGORIAS
-                .when('/categories', {
-                    templateUrl: '/js/app/categories/views/index.html',
-                    controller: 'CategoryController'
-                })
-                .when('/categories/create',{
-                    templateUrl:'/categories/form-create',
-                    controller: 'CategoryController'
-                })
-                .when('/categories/edit/:id',{
-                    templateUrl:'/categories/form-edit',
-                    controller: 'CategoryController'
-                }) 
+  
+
                 //------------------
-                //RUTES PRODUCTOS
-                .when('/products', {
-                    templateUrl: '/js/app/products/views/index.html',
-                    controller: 'ProductController'
+                 //RUTES CARGA LECTIVA
+                .when('/carga', {
+                    templateUrl: '/js/app/cargaLectiva/views/index.html',
+                    controller: 'CargaLectivaController'
                 })
-                .when('/products/create',{
-                    templateUrl:'/products/form-create',
-                    controller: 'ProductController'
+                .when('/asignarcarga', {
+                    templateUrl: '/js/app/cargaLectiva/views/asignarcarga.html',
+                    controller: 'CargaLectivaController'
                 })
-                .when('/products/edit/:id',{
-                    templateUrl:'/products/form-edit',
-                    controller: 'ProductController'
+                .when('/carga/create',{
+                    templateUrl:'/cargaLectiva/form-create',
+                    controller: 'CargaLectivaController'
+                })
+                .when('/carga/edit/:id',{
+                    templateUrl:'/cargaLectiva/form-edit',
+                    controller: 'CargaLectivaController'
                 }) 
                 //------------------
                 .otherwise({

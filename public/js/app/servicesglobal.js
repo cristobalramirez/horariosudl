@@ -107,9 +107,9 @@
                 return deferred.promise;
             }
 
-            function searchMes(uri,mes,year,conc,page){
+            function searchCurso(uri,cilco,curricula,escuela,page){
                 var deferred = $q.defer();
-                var result = $http.get('/api/'+uri+'/search/'+mes+'/'+year+'/'+conc+'/?page='+page);
+                var result = $http.get('/api/'+uri+'/search/'+cilco+'/'+curricula+'/'+escuela+'/?page='+page);
 
 
                 result.success(function(data){
@@ -230,7 +230,7 @@
                 select:select,
                 reporteCajaMensual: reporteCajaMensual,
                 byforeingKey: byforeingKey,
-                searchMes,searchMes,
+                searchCurso,searchCurso,
                 Reportes10: Reportes10,
                 reportPro,reportPro,
                 reportProWare,reportProWare,

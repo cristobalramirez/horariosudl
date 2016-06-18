@@ -83,67 +83,83 @@ Route::group(['middleware' => 'role'], function () {
     Route::get('api/persons/find/{id}', ['as' => 'person_find', 'uses' => 'PersonsController@find']);
 //END PERSONS ROUTES
 
+//CARGA LECTIVA ROUTES
+    Route::get('carga', ['as' => 'person', 'uses' => 'CargaLectivaController@index']);
+    Route::get('asignarcarga', ['as' => 'person', 'uses' => 'CargaLectivaController@asignarcarga']);
+    Route::get('carga/create', ['as' => 'person_create', 'uses' => 'CargaLectivaController@index']);
+    Route::get('carga/edit/{id?}', ['as' => 'person_edit', 'uses' => 'CargaLectivaController@index']);
+    Route::get('carga/form-create', ['as' => 'person_form_create', 'uses' => 'CargaLectivaController@form_create']);
+    Route::get('carga/form-edit', ['as' => 'person_form_edit', 'uses' => 'CargaLectivaController@form_edit']);
+    Route::get('api/carga/all', ['as' => 'person_all', 'uses' => 'CargaLectivaController@all']);
+    Route::get('api/carga/paginate/', ['as' => 'person_paginate', 'uses' => 'CargaLectivaController@paginatep']);
+    Route::post('api/carga/create', ['as' => 'person_create', 'uses' => 'CargaLectivaController@create']);
+    Route::put('api/carga/edit', ['as' => 'person_edit', 'uses' => 'CargaLectivaController@edit']);
+    Route::post('api/carga/destroy', ['as' => 'person_destroy', 'uses' => 'CargaLectivaController@destroy']);
+    Route::get('api/carga/search/{q?}', ['as' => 'person_search', 'uses' => 'CargaLectivaController@search']);
+    Route::get('api/carga/find/{id}', ['as' => 'person_find', 'uses' => 'CargaLectivaController@find']);
 
-Route::group(['middleware' => 'role'], function () {
-    Route::get('stations', ['as' => 'warehouse', 'uses' => 'StationsController@index']);
-    Route::get('stations/create', ['as' => 'warehouse_create', 'uses' => 'StationsController@index']);
-    Route::get('stations/edit/{id?}', ['as' => 'atribut_edit', 'uses' => 'StationsController@index']);
-    Route::get('stations/form-create', ['as' => 'atribut_form_create', 'uses' => 'StationsController@form_create']);
-    Route::get('stations/form-edit', ['as' => 'atribut_form_edit', 'uses' => 'StationsController@form_edit']);
-});
+    Route::get('api/carga/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CargaLectivaController@searchCarga']);
+//END CATEGORIAS ROUTES
+//CARGA LECTIVA ROUTES
+    Route::get('curso', ['as' => 'person', 'uses' => 'CursoController@index']);
+    Route::get('curso/create', ['as' => 'person_create', 'uses' => 'CursoController@index']);
+    Route::get('curso/edit/{id?}', ['as' => 'person_edit', 'uses' => 'CursoController@index']);
+    Route::get('curso/form-create', ['as' => 'person_form_create', 'uses' => 'CursoController@form_create']);
+    Route::get('curso/form-edit', ['as' => 'person_form_edit', 'uses' => 'CursoController@form_edit']);
+    Route::get('api/curso/all', ['as' => 'person_all', 'uses' => 'CursoController@all']);
+    Route::get('api/curso/paginate/', ['as' => 'person_paginate', 'uses' => 'CursoController@paginatep']);
+    Route::post('api/curso/create', ['as' => 'person_create', 'uses' => 'CursoController@create']);
+    Route::put('api/curso/edit', ['as' => 'person_edit', 'uses' => 'CursoController@edit']);
+    Route::post('api/curso/destroy', ['as' => 'person_destroy', 'uses' => 'CursoController@destroy']);
+    Route::get('api/curso/search/{q?}', ['as' => 'person_search', 'uses' => 'CursoController@search']);
+    Route::get('api/curso/find/{id}', ['as' => 'person_find', 'uses' => 'CursoController@find']);
 
+    Route::get('api/curso/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CursoController@searchCurso']);
+//END CATEGORIAS ROUTES
 
-Route::get('api/stations/all',['as'=>'atribut_all', 'uses'=>'StationsController@all']);
-Route::get('api/stations/paginate/',['as' => 'atribut_paginate', 'uses' => 'StationsController@paginatep']);
-Route::post('api/stations/create',['as'=>'atribut_create', 'uses'=>'StationsController@create']);
-Route::put('api/stations/edit',['as'=>'atribut_edit', 'uses'=>'StationsController@edit']);
-Route::post('api/stations/destroy',['as'=>'atribut_destroy', 'uses'=>'StationsController@destroy']);
-Route::get('api/stations/search/{q?}',['as'=>'atribut_search', 'uses'=>'StationsController@search']);
-Route::get('api/stations/find/{id}',['as'=>'atribut_find', 'uses'=>'StationsController@find']);
-Route::get('api/stations/validar/{text}',['as'=>'atribut_find', 'uses'=>'StationsController@validastationname']);
+    //CARGA LECTIVA ROUTES
+    Route::get('docente', ['as' => 'person', 'uses' => 'DocenteController@index']);
+    Route::get('docente/create', ['as' => 'person_create', 'uses' => 'DocenteController@index']);
+    Route::get('docente/edit/{id?}', ['as' => 'person_edit', 'uses' => 'DocenteController@index']);
+    Route::get('docente/form-create', ['as' => 'person_form_create', 'uses' => 'DocenteController@form_create']);
+    Route::get('docente/form-edit', ['as' => 'person_form_edit', 'uses' => 'DocenteController@form_edit']);
+    Route::get('api/docente/all', ['as' => 'person_all', 'uses' => 'DocenteController@all']);
+    Route::get('api/docente/paginate/', ['as' => 'person_paginate', 'uses' => 'DocenteController@paginatep']);
+    Route::post('api/docente/create', ['as' => 'person_create', 'uses' => 'DocenteController@create']);
+    Route::put('api/docente/edit', ['as' => 'person_edit', 'uses' => 'DocenteController@edit']);
+    Route::post('api/docente/destroy', ['as' => 'person_destroy', 'uses' => 'DocenteController@destroy']);
+    Route::get('api/docente/search/{q?}', ['as' => 'person_search', 'uses' => 'DocenteController@search']);
+    Route::get('api/docente/find/{id}', ['as' => 'person_find', 'uses' => 'DocenteController@find']);
 
-
-//-----------------------------Promociones---------------------------
-Route::get('promotions',['as'=>'person','uses'=>'PromotionsController@index']);
-Route::get('promotions/create',['as'=>'person_create','uses'=>'PromotionsController@index']);
-Route::get('promotions/edit/{id?}', ['as' => 'person_edit', 'uses' => 'PromotionsController@index']);
-Route::get('promotions/form-create',['as'=>'person_form_create','uses'=>'PromotionsController@form_create']);
-Route::get('promotions/form-edit',['as'=>'person_form_edit','uses'=>'PromotionsController@form_edit']);
-Route::get('api/promotions/all',['as'=>'person_all', 'uses'=>'PromotionsController@all']);
-Route::get('api/promotions/paginate/',['as' => 'person_paginate', 'uses' => 'PromotionsController@paginatep']);
-Route::post('api/promotions/create',['as'=>'person_create', 'uses'=>'PromotionsController@create']);
-Route::put('api/promotions/edit',['as'=>'person_edit', 'uses'=>'PromotionsController@edit']);
-Route::post('api/promotions/destroy',['as'=>'person_destroy', 'uses'=>'PromotionsController@destroy']);
-Route::get('api/promotions/search/{q?}',['as'=>'person_search', 'uses'=>'PromotionsController@search']);
-Route::get('api/promotions/find/{id}',['as'=>'person_find', 'uses'=>'PromotionsController@find']);
-Route::get('api/promotions/mostrarCostos/{id}','PromotionsController@mostrarCostos');
-//--------------------------Fin Promociones--------------------
+    Route::get('api/decenteCarga/search/{q?}', ['as' => 'person_search', 'uses' => 'DocenteController@searchCarga']);
+    //END CATEGORIAS ROUTES
+    //CATEGORIAS ROUTES
+    Route::get('planestudiantil', ['as' => 'person', 'uses' => 'PlanEstudiantilController@index']);
+    Route::get('planestudiantil/create', ['as' => 'person_create', 'uses' => 'PlanEstudiantilController@index']);
+    Route::get('planestudiantil/edit/{id?}', ['as' => 'person_edit', 'uses' => 'PlanEstudiantilController@index']);
+    Route::get('planestudiantil/form-create', ['as' => 'person_form_create', 'uses' => 'PlanEstudiantilController@form_create']);
+    Route::get('planestudiantil/form-edit', ['as' => 'person_form_edit', 'uses' => 'PlanEstudiantilController@form_edit']);
+    Route::get('api/planestudiantil/all', ['as' => 'person_all', 'uses' => 'PlanEstudiantilController@all']);
+    Route::get('api/planestudiantil/paginate/', ['as' => 'person_paginate', 'uses' => 'PlanEstudiantilController@paginatep']);
+    Route::post('api/planestudiantil/create', ['as' => 'person_create', 'uses' => 'PlanEstudiantilController@create']);
+    Route::put('api/planestudiantil/edit', ['as' => 'person_edit', 'uses' => 'PlanEstudiantilController@edit']);
+    Route::post('api/planestudiantil/destroy', ['as' => 'person_destroy', 'uses' => 'PlanEstudiantilController@destroy']);
+    Route::get('api/planestudiantil/search/{q?}', ['as' => 'person_search', 'uses' => 'PlanEstudiantilController@search']);
+    Route::get('api/planestudiantil/find/{id}', ['as' => 'person_find', 'uses' => 'PlanEstudiantilController@find']);
+    Route::get('api/planestudiantil/select','PlanEstudiantilController@selectPlan');
+//END CATEGORIAS ROUTES
 //CATEGORIAS ROUTES
-    Route::get('categories', ['as' => 'person', 'uses' => 'CategoriesController@index']);
-    Route::get('categories/create', ['as' => 'person_create', 'uses' => 'CategoriesController@index']);
-    Route::get('categories/edit/{id?}', ['as' => 'person_edit', 'uses' => 'CategoriesController@index']);
-    Route::get('categories/form-create', ['as' => 'person_form_create', 'uses' => 'CategoriesController@form_create']);
-    Route::get('categories/form-edit', ['as' => 'person_form_edit', 'uses' => 'CategoriesController@form_edit']);
-    Route::get('api/categories/all', ['as' => 'person_all', 'uses' => 'CategoriesController@all']);
-    Route::get('api/categories/paginate/', ['as' => 'person_paginate', 'uses' => 'CategoriesController@paginatep']);
-    Route::post('api/categories/create', ['as' => 'person_create', 'uses' => 'CategoriesController@create']);
-    Route::put('api/categories/edit', ['as' => 'person_edit', 'uses' => 'CategoriesController@edit']);
-    Route::post('api/categories/destroy', ['as' => 'person_destroy', 'uses' => 'CategoriesController@destroy']);
-    Route::get('api/categories/search/{q?}', ['as' => 'person_search', 'uses' => 'CategoriesController@search']);
-    Route::get('api/categories/find/{id}', ['as' => 'person_find', 'uses' => 'CategoriesController@find']);
+    Route::get('semestre', ['as' => 'person', 'uses' => 'SemestreController@index']);
+    Route::get('semestre/create', ['as' => 'person_create', 'uses' => 'SemestreController@index']);
+    Route::get('semestre/edit/{id?}', ['as' => 'person_edit', 'uses' => 'SemestreController@index']);
+    Route::get('semestre/form-create', ['as' => 'person_form_create', 'uses' => 'SemestreController@form_create']);
+    Route::get('semestre/form-edit', ['as' => 'person_form_edit', 'uses' => 'SemestreController@form_edit']);
+    Route::get('api/semestre/all', ['as' => 'person_all', 'uses' => 'SemestreController@all']);
+    Route::get('api/semestre/paginate/', ['as' => 'person_paginate', 'uses' => 'SemestreController@paginatep']);
+    Route::post('api/semestre/create', ['as' => 'person_create', 'uses' => 'SemestreController@create']);
+    Route::put('api/semestre/edit', ['as' => 'person_edit', 'uses' => 'SemestreController@edit']);
+    Route::post('api/semestre/destroy', ['as' => 'person_destroy', 'uses' => 'SemestreController@destroy']);
+    Route::get('api/semestre/search/{q?}', ['as' => 'person_search', 'uses' => 'SemestreController@search']);
+    Route::get('api/semestre/find/{id}', ['as' => 'person_find', 'uses' => 'SemestreController@find']);
+    Route::get('api/semestre/select','SemestreController@select');
 //END CATEGORIAS ROUTES
-//PRODUCTOS ROUTES
-    Route::get('products', ['as' => 'person', 'uses' => 'ProductsController@index']);
-    Route::get('products/create', ['as' => 'person_create', 'uses' => 'ProductsController@index']);
-    Route::get('products/edit/{id?}', ['as' => 'person_edit', 'uses' => 'ProductsController@index']);
-    Route::get('products/form-create', ['as' => 'person_form_create', 'uses' => 'ProductsController@form_create']);
-    Route::get('products/form-edit', ['as' => 'person_form_edit', 'uses' => 'ProductsController@form_edit']);
-    Route::get('api/products/all', ['as' => 'person_all', 'uses' => 'ProductsController@all']);
-    Route::get('api/products/paginate/', ['as' => 'person_paginate', 'uses' => 'ProductsController@paginatep']);
-    Route::post('api/products/create', ['as' => 'person_create', 'uses' => 'ProductsController@create']);
-    Route::put('api/products/edit', ['as' => 'person_edit', 'uses' => 'ProductsController@edit']);
-    Route::post('api/products/destroy', ['as' => 'person_destroy', 'uses' => 'ProductsController@destroy']);
-    Route::get('api/products/search/{q?}', ['as' => 'person_search', 'uses' => 'ProductsController@search']);
-    Route::get('api/products/find/{id}', ['as' => 'person_find', 'uses' => 'ProductsController@find']);
-//END CATEGORIAS ROUTES
-
