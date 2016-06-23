@@ -5,6 +5,9 @@
                 $scope.cargasLectivas = {};
                 $scope.cargaLectiva = {};
                 $scope.cursos = [];
+                $scope.otrosCursos = [];
+                $scope.todoscursos = [];
+                $scope.cargaAsignada = [];
                 $scope.curso = {};
                 $scope.cursosAsignados = [];
                 $scope.cursoAsignado = {};
@@ -25,18 +28,19 @@
                 $scope.cursosSeparados={};
                 $scope.idcurso;
                 $scope.bandera=true;
-                $scope.cambiarCarga = function (Row) {
+                $scope.id=[];
+                /*$scope.cambiarCarga = function (Row) {
                     $scope.idcurso=Row.curso_id;
                     crudService.search('carga',Row.curso_id,1).then(function (data) {
                         $scope.cursosSeparados = data.data;
                     });
                     $scope.banderaAgregarCarga = true;
-                };
+                };*/
                 $scope.cancelar = function (Row) {
                     $scope.banderaAgregarCarga = false;
                 }
                 $scope.asignarDocente = function (Row) {
-                    
+                    $scope.banderaAgregarCarga = true;
                     crudService.byId(Row.id,'carga').then(function (data) {
                         $scope.bandera=false;
                         $scope.cargaLectiva = data;
@@ -45,6 +49,65 @@
                         });
                     });
                 };
+
+                $scope.selectPlan2 = function(){
+                    $scope.otrosCursos=[];
+                    $scope.cargaAsignada=[];
+                    $scope.cursos=[];
+                    $scope.id=[];
+
+                    crudService.searchCurso('cursoall',$scope.ciclo,$scope.plan_id,1).then(function (data){
+                        $scope.otrosCursos=data.data;
+                        crudService.searchCurso('cargasemestre',$scope.ciclo,$scope.plan_id,$scope.semestre_id).then(function (data){
+                        $scope.cargaAsignada=data.data;
+                        var contador=0;
+                        var contador1=0;
+                        for (var i = 0; i < $scope.cargaAsignada.length; i++) {
+                            for (var j = 0; j < $scope.cargaAsignada.length; j++) {
+                                if (i!=j) {
+                                    if ($scope.cargaAsignada[i].curso_id==$scope.cargaAsignada[j].curso_id) {
+                                        
+                                        $scope.id[contador1]=$scope.cargaAsignada[i].curso_id;
+                                        contador1++;
+                                    }
+                                }
+                            }
+                        } 
+                            for (var k = 0; k < $scope.cargaAsignada.length; k++) {
+                                $scope.ban=false;
+                                if ($scope.cargaAsignada[k].grupo!=$scope.grupo) {
+
+                                    for (var j = 0; j < $scope.id.length; j++) {
+                                        if ($scope.id[j]==$scope.cargaAsignada[k].curso_id) {
+                                          $scope.ban=true; 
+                                        }
+                                    }
+                                    if (!$scope.ban) {
+                                         
+                                        $scope.cursos[contador]=  $scope.cargaAsignada[k];
+                                        contador++;
+                                    }
+                                }
+                            }
+                            for (var i = 0; i < $scope.otrosCursos.length; i++) {
+                                $scope.ban1=false;
+                                for (var k = 0; k < $scope.cargaAsignada.length; k++) {
+                                    if ($scope.otrosCursos[i].id==$scope.cargaAsignada[k].curso_id) {
+                                        $scope.ban1=true;
+                                    }
+                                }
+                                if (!$scope.ban1) {                                       
+                                        $scope.cursos[contador]=  $scope.otrosCursos[i];
+                                        contador++;
+                                    }
+                            }
+                        });
+                    });
+
+                    if ($scope.otrosCursos.length>0&&$scope.cursos.length==0) {
+                            alert("Ya se agrego todos los cursos para este grupo")
+                    }
+                }
                 var id = $routeParams.id;
                 if(id)
                 {
@@ -52,6 +115,7 @@
                         $scope.cargaLectiva = data;
                     });
                 }else{
+
                     crudService.searchCurso('curso',$scope.ciclo,$scope.plan_id,1).then(function (data){
                         $scope.cursos = data.data;
                     });
@@ -71,16 +135,15 @@
                         $scope.cargasLectivas = data.data;
                     });
                 }
+
                 $scope.selectPlan1 = function(){
-                    crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,1).then(function (data){
+                    crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,$scope.semestre_id).then(function (data){
                         $scope.cargasLectivas = data.data;
+                        $log.log($scope.cargasLectivas);
                     });
                 }
-                $scope.selectPlan = function(){
-                    crudService.searchCurso('curso',$scope.ciclo,$scope.plan_id,1).then(function (data){
-                        $scope.cursos = data.data;
-                    });
-                }
+
+                
 
                 socket.on('cargaLectiva.update', function (data) {
                     $scope.cargasLectivas=JSON.parse(data);
@@ -90,6 +153,8 @@
                 $scope.createAsignacionCarga = function(){
                         $scope.cargasLectivas={};
                         $scope.cargasLectivas.cursos=$scope.cursosAsignados;
+                        $log.log($scope.cargasLectivas);
+                        //xcvb
 
                         if ($scope.cargasLectivas.cursos.length>0) {
                             crudService.create($scope.cargasLectivas, 'carga').then(function (data) {
@@ -172,7 +237,17 @@
                   });
                 };
                 $scope.asignarCurso  = function(Row) {
-                    $scope.cursoAsignado.curso_id=Row.id;
+                    $log.log($scope.cursos);
+                    //$log.log(Row.curso_id);
+                    //$log.log($scope.grupo);
+                    //$log.log(Row);
+                    if (Row.curso_id==undefined) {
+                        $scope.cursoAsignado.curso_id=Row.id;
+                    }else{
+                        $scope.cursoAsignado.curso_id=Row.curso_id;
+                    }
+                    $log.log($scope.cursoAsignado.curso_id);
+                    
                     $scope.cursoAsignado.grupo=$scope.grupo;
                     $scope.cursoAsignado.semestre_id=$scope.semestre_id;
                     if (Row.bandera) {
@@ -187,7 +262,7 @@
                         }
                         
                     }
-
+                    $log.log($scope.cursosAsignados);
                 }
             }]);
 })();

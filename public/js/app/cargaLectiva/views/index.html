@@ -38,7 +38,7 @@
                           <option value="VI">VI</option>
                           <option value="VII">VII</option>
                           <option value="VIII">VIII</option>
-                          <option value="XI">XI</option>
+                          <option value="IX">IX</option>
                           <option value="X">X</option>
                         </select>
                       </div>
@@ -93,22 +93,25 @@
                       <th style="width: 10px">#</th>
                       <th>Codigo</th>
                       <th>Descripcion</th>
+                      <th>Grupo</th>
                       <th>Creditos</th>
                       <th>Ciclo</th>
                       <th>Horas Teoricas</th>
                       <th>Horas Practica</th>
+                      <th>Docente</th>
                       
                     </tr>
                     
                     <tr ng-repeat="row in cargasLectivas">
                       <td>{{$index + 1}}</td>
                       <td>{{row.codigo}}</td>
-                      <td><a  href="#" ng-click="cambiarCarga(row)">{{row.nombre}}</a></td>
+                      <td><a  href="#" ng-click="asignarDocente(row)">{{row.nombre}}</a></td>
+                      <td>{{row.grupo}}</td>
                       <td>{{row.creditos}}</td>
                       <td>{{row.ciclo}}</td>
                       <td>{{row.horasTeoricas}}</td>
                       <td>{{row.horasPracticas}}</td>
-                      
+                      <td>{{row.nombres+" "+row.apellidos}}</td>
                     </tr>
                     
                     
@@ -134,7 +137,7 @@
                       </div>
                     </div>
                     </br>
-                    <div>
+                    <!--<div>
                     <table class="table table-bordered">
                     <tr>
                       <th style="width: 10px">#</th>
@@ -162,7 +165,7 @@
                     
                     
                   </table>
-                  </div>
+                  </div>-->
                       </BR>
                       <div ALIGN="right" >
                         <button type="submit" class="btn btn-success" ng-click="cancelar()">Cancelar</button>

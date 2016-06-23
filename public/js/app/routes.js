@@ -53,6 +53,20 @@
                     controller: 'CargaLectivaController'
                 }) 
                 //------------------
+                //RUTES CARGA LECTIVA
+                .when('/disponibilidadDocente', {
+                    templateUrl: '/js/app/disponibilidadDocente/views/index.html',
+                    controller: 'DisponibilidadDocenteController'
+                })
+                .when('/disponibilidadDocente/create',{
+                    templateUrl:'/disponibilidadDocente/form-create',
+                    controller: 'DisponibilidadDocenteController'
+                })
+                .when('/disponibilidadDocente/edit/:id',{
+                    templateUrl:'/disponibilidadDocente/form-edit',
+                    controller: 'DisponibilidadDocenteController'
+                }) 
+                //------------------
                 .otherwise({
                     redirectTo: '/'
                 });

@@ -59,6 +59,8 @@ class CargaLectivaController extends Controller {//Te Quiero Mucho
     {
         \DB::beginTransaction();
         $var = $request->cursos;
+        //var_dump($var);die();
+
         foreach($var as $object){
             $cargaLectiva = $this->cargaLectivaRepo->getModel();
             $insertar=new CargaLectivaManager($cargaLectiva,$object);
@@ -102,6 +104,11 @@ class CargaLectivaController extends Controller {//Te Quiero Mucho
     public function searchCarga($a,$b,$c)
     {
         $carga=$this->cargaLectivaRepo->searchCarga($a,$b,$c);
+        return response()->json($carga);
+    }
+    public function searchCargaSemestre($a,$b,$c)
+    {
+        $carga=$this->cargaLectivaRepo->searchCargaSemestre($a,$b,$c);
         return response()->json($carga);
     }
 }

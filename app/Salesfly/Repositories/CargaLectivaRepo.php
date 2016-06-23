@@ -21,13 +21,31 @@ class CargaLectivaRepo extends BaseRepo{
     public function searchCarga($a,$b,$c)
     { 
         $categories =CargaLectiva::join('curso','curso.id','=','cargaLectiva.curso_id')
+                    ->leftjoin('docente','docente.id','=','cargaLectiva.docente_id')
+                    ->select('cargaLectiva.*','curso.planEstudiantil_id','curso.ciclo','curso.nombre','curso.codigo','curso.creditos','curso.horasTeoricas','curso.horasPracticas','curso.escuela_id','docente.nombres','docente.apellidos')
+                    ->where('ciclo','=', $a)
+                    ->where('planEstudiantil_id','=', $b)
+                    ->where('semestre_id','=', $c)
+                    ->where('curso.escuela_id','=', auth()->user()->escuela_id)
+                    //->groupby('cargaLectiva.curso_id')
+                    ->orderBy('curso.nombre', 'asc')
+                    ->orderBy('cargaLectiva.grupo', 'asc')
+                    ->paginate(10000);
+        return $categories;            
+    }
+    public function searchCargaSemestre($a,$b,$c)
+    { 
+        $categories =CargaLectiva::join('curso','curso.id','=','cargaLectiva.curso_id')
+                    //->leftjoin('docente','docente.id','=','cargaLectiva.docente_id')
                     ->select('cargaLectiva.*','curso.planEstudiantil_id','curso.ciclo','curso.nombre','curso.codigo','curso.creditos','curso.horasTeoricas','curso.horasPracticas','curso.escuela_id')
                     ->where('ciclo','=', $a)
                     ->where('planEstudiantil_id','=', $b)
-                    ->where('escuela_id','=', auth()->user()->escuela_id)
-                    ->groupby('cargaLectiva.curso_id')->paginate(10000);
-        return $categories;
-
-            
+                    ->where('semestre_id','=', $c)
+                    ->where('curso.escuela_id','=', auth()->user()->escuela_id)
+                    //->groupby('cargaLectiva.curso_id')
+                    //->orderBy('curso.nombre', 'asc')
+                    //->orderBy('cargaLectiva.grupo', 'asc')
+                    ->paginate(10000);
+        return $categories;            
     }
 } 

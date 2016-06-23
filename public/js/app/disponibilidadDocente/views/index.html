@@ -1,0 +1,132 @@
+<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Disponibilidad Docente
+            <small>Panel de Control</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Disponibilidad Docente</li>
+          </ol>
+
+          
+        </section>
+
+        
+
+        <!-- Main content -->
+        <section class="content">
+        <div class="row">
+        
+        </div>
+        </br>
+          <div class="row">
+            <div class="col-md-12">
+
+
+              <div class="box">
+
+                <div class="box-header with-border">
+                  <div class="row">  
+                    
+                      
+                      <div class="col-md-4">
+                        <label>Docente</label>
+                        <input type="text" ng-model="docenteSelected" placeholder="Buscar Docente" typeahead="atributo as atributo.busqueda for atributo in getDocente($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control ng-pristine ng-valid ng-touched" typeahead-on-select="selecionarCliente()" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-60-1185" >
+                      </div>
+                      <div class="col-md-2" ng-disabled="docenteSelected!=undefined">
+                        <label>Cargar Asignacion</label>
+                        <button type="button" class="btn btn btn-default" ng-click="click()">Cargar Asignacion</button>
+                      </div>
+                      <div class="col-md-3">
+                        
+                      </div>
+                      <div class="col-md-3">
+                        <label for="curso">Ciclo Academico</label>
+                        <input type="text" class="form-control" name="Ciclo Academico" placeholder="Ciclo Academico" ng-disabled="true" ng-model="nombreSemestre" required>
+                      </div>
+                    </div>
+                    
+                  <!--<h3 class="box-title">CARGA LECTIVA</h3>
+                  <div class="box-tools">
+                  <form ng-keyup="searchCategory()">
+                    <div class="input-group" style="width: 200px;">
+                      <input type="text" ng-model="query"  name="table_search" class="form-control input-sm pull-right" placeholder="Search" />
+                      <div class="input-group-btn">
+                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>-->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <!--<div class="row">
+                        <div class="col-sm-10">
+                            <div ng-show="success" class="callout callout-info">
+                                <strong>{{success}} se ha creado correctamente!</strong>
+                            </div>
+                        </div>
+                    </div>
+                <div class="callout callout-info"  ng-show="disponibilidadDocente.id">
+                    <h4>¿ Estás seguro que deseas eliminar a "{{disponibilidadDocente.nombre}}" ?</h4>
+                    <p>
+                      <button type="button" class="btn btn-danger" ng-click="destroyCategory()">Si</button>
+                      <button type="button" class="btn btn-default" ng-click="cancelCategory()">No</button>
+                    </p>
+                  </div>-->
+                  <table class="table table-bordered">
+                    <tr>
+                      <th style="width: 150px">Hora</th>
+                      <th>Lunes</th>
+                      <th>Martes</th>
+                      <th>Miercoles</th>
+                      <th>Jueves</th>
+                      <th>Viernes</th>
+                      <th>Sabado</th>
+                      <th>Domingo</th>
+                    </tr>
+                    
+                    <tr ng-repeat="row in horas">
+                      <td>{{row.hora+'-'+row.horaFin}}</td>
+                      <td ng-show="row.banderaLunes" class="success" ng-click="verFila(row,'Lunes',row.banderaLunes,row.idLunes)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaLunes" ng-click="verFila(row,'Lunes',row.banderaLunes,row.idLunes)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaMartes" class="success" ng-click="verFila(row,'Martes',row.banderaMartes,row.idMartes)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaMartes" ng-click="verFila(row,'Martes',row.banderaMartes,row.idMartes)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaMiercoles" class="success" ng-click="verFila(row,'Miercoles',row.banderaMiercoles,row.idMiercoles)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaMiercoles" ng-click="verFila(row,'Miercoles',row.banderaMiercoles,row.idMiercoles)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaJueves" class="success" ng-click="verFila(row,'Jueves',row.banderaJueves,row.idJueves)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaJueves" ng-click="verFila(row,'Jueves',row.banderaJueves,row.idJueves)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaViernes" class="success" ng-click="verFila(row,'Viernes',row.banderaViernes,row.idViernes)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaViernes" ng-click="verFila(row,'Viernes',row.banderaViernes,row.idViernes)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaSabado" class="success" ng-click="verFila(row,'Sabado',row.banderaSabado,row.idSabado)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaSabado" ng-click="verFila(row,'Sabado',row.banderaSabado,row.idSabado)">{{row.codigo}}</td>
+
+                      <td ng-show="row.banderaDomingo" class="success" ng-click="verFila(row,'Domingo',row.banderaDomingo,row.idDomingo)">{{row.codigo}}</td>
+
+                      <td ng-show="!row.banderaDomingo" ng-click="verFila(row,'Domingo',row.banderaDomingo,row.idDomingo)">{{row.codigo}}</td>
+                      
+                    </tr>
+                    
+                    
+                  </table>
+
+                  <div>
+                    </BR>
+                    
+                  </div>
+                </div><!-- /.box-body -->
+                
+              </div><!-- /.box -->
+            </div>  
+          </div>
+        </section>

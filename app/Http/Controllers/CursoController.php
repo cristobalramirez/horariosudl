@@ -101,4 +101,9 @@ class CursoController extends Controller {//Te Quiero Mucho
         $curso = $this->cursoRepo->searchCurso($a,$b,$c);
         return response()->json($curso);
     }
+    public function searchCursoAll($a,$b,$c)
+    {
+        $curso = $this->cursoRepo->searchCursoAll($a,$b,$c);
+        return response()->json($curso);
+    }
 }

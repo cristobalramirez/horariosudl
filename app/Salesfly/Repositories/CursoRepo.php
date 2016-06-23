@@ -17,27 +17,27 @@ class CursoRepo extends BaseRepo{
     }
     public function searchCurso($a,$b,$c)
     { 
-        $categories =Curso::where('ciclo','=', $a)
+        $categories =Curso::leftjoin('cargaLectiva','cargaLectiva.curso_id','=','curso.id')
+                    ->select('curso.*','cargaLectiva.id as idCarga','cargaLectiva.grupo as grupo','cargaLectiva.semestre_id')
+                    ->where('ciclo','=', $a)
                     ->where('planEstudiantil_id','=', $b)
+                    //->where('semestre_id','=', $c)
                     ->where('escuela_id','=', auth()->user()->escuela_id)
                     ->paginate(10000);
-        return $categories;
-        /*if($c==0){
-            $c='%%';
-        }
-        if($b!=0 && $a!=0){
-            $CashMonthlys =CashMonthly::with('expenseMonthly')
-                    ->whereBetween('fecha', [$a,$b])
-                    ->where('expenseMonthlys_id','like',$c)  
-                    ->paginate(15); 
-            return $CashMonthlys;
-        }else{
-            $CashMonthlys =CashMonthly::with('expenseMonthly')
-                    ->where('expenseMonthlys_id','like',$c)  
-                    ->paginate(15); 
-            return $CashMonthlys;        
-        }*/
-        
+        return $categories;   
+            
+    }
+    public function searchCursoAll($a,$b,$c)
+    { 
+        $categories =Curso:://leftjoin('cargaLectiva','cargaLectiva.curso_id','=','curso.id')
+                    //->select('curso.*','cargaLectiva.id as idCarga','cargaLectiva.grupo as grupo','cargaLectiva.semestre_id')
+                    //->
+                    where('ciclo','=', $a)
+                    ->where('planEstudiantil_id','=', $b)
+                    //->where('semestre_id','=', $c)
+                    ->where('escuela_id','=', auth()->user()->escuela_id)
+                    ->paginate(10000);
+        return $categories;   
             
     }
 } 

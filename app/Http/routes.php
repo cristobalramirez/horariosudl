@@ -99,6 +99,7 @@ Route::group(['middleware' => 'role'], function () {
     Route::get('api/carga/find/{id}', ['as' => 'person_find', 'uses' => 'CargaLectivaController@find']);
 
     Route::get('api/carga/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CargaLectivaController@searchCarga']);
+    Route::get('api/cargasemestre/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CargaLectivaController@searchCargaSemestre']);
 //END CATEGORIAS ROUTES
 //CARGA LECTIVA ROUTES
     Route::get('curso', ['as' => 'person', 'uses' => 'CursoController@index']);
@@ -115,6 +116,7 @@ Route::group(['middleware' => 'role'], function () {
     Route::get('api/curso/find/{id}', ['as' => 'person_find', 'uses' => 'CursoController@find']);
 
     Route::get('api/curso/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CursoController@searchCurso']);
+    Route::get('api/cursoall/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'CursoController@searchCursoAll']);
 //END CATEGORIAS ROUTES
 
     //CARGA LECTIVA ROUTES
@@ -162,4 +164,35 @@ Route::group(['middleware' => 'role'], function () {
     Route::get('api/semestre/search/{q?}', ['as' => 'person_search', 'uses' => 'SemestreController@search']);
     Route::get('api/semestre/find/{id}', ['as' => 'person_find', 'uses' => 'SemestreController@find']);
     Route::get('api/semestre/select','SemestreController@select');
+//END CATEGORIAS ROUTES
+//CATEGORIAS ROUTES
+    Route::get('disponibilidadDocente', ['as' => 'person', 'uses' => 'DisponibilidadDocenteController@index']);
+    Route::get('disponibilidadDocente/create', ['as' => 'person_create', 'uses' => 'DisponibilidadDocenteController@index']);
+    Route::get('disponibilidadDocente/edit/{id?}', ['as' => 'person_edit', 'uses' => 'DisponibilidadDocenteController@index']);
+    Route::get('disponibilidadDocente/form-create', ['as' => 'person_form_create', 'uses' => 'DisponibilidadDocenteController@form_create']);
+    Route::get('disponibilidadDocente/form-edit', ['as' => 'person_form_edit', 'uses' => 'DisponibilidadDocenteController@form_edit']);
+    Route::get('api/disponibilidadDocente/all', ['as' => 'person_all', 'uses' => 'DisponibilidadDocenteController@all']);
+    Route::get('api/disponibilidadDocente/paginate/', ['as' => 'person_paginate', 'uses' => 'DisponibilidadDocenteController@paginatep']);
+    Route::post('api/disponibilidadDocente/create', ['as' => 'person_create', 'uses' => 'DisponibilidadDocenteController@create']);
+    Route::put('api/disponibilidadDocente/edit', ['as' => 'person_edit', 'uses' => 'DisponibilidadDocenteController@edit']);
+    Route::post('api/disponibilidadDocente/destroy', ['as' => 'person_destroy', 'uses' => 'DisponibilidadDocenteController@destroy']);
+    Route::get('api/disponibilidadDocente/search/{q?}', ['as' => 'person_search', 'uses' => 'DisponibilidadDocenteController@search']);
+    Route::get('api/disponibilidadDocente/find/{id}', ['as' => 'person_find', 'uses' => 'DisponibilidadDocenteController@find']);
+    Route::get('api/disponibilidadDocente/select','DisponibilidadDocenteController@select');
+//END CATEGORIAS ROUTES
+//CATEGORIAS ROUTES
+    Route::get('hora', ['as' => 'person', 'uses' => 'HoraController@index']);
+    Route::get('hora/create', ['as' => 'person_create', 'uses' => 'HoraController@index']);
+    Route::get('hora/edit/{id?}', ['as' => 'person_edit', 'uses' => 'HoraController@index']);
+    Route::get('hora/form-create', ['as' => 'person_form_create', 'uses' => 'HoraController@form_create']);
+    Route::get('hora/form-edit', ['as' => 'person_form_edit', 'uses' => 'HoraController@form_edit']);
+    Route::get('api/hora/all', ['as' => 'person_all', 'uses' => 'HoraController@all']);
+    Route::get('api/hora/paginate/', ['as' => 'person_paginate', 'uses' => 'HoraController@paginatep']);
+    Route::post('api/hora/create', ['as' => 'person_create', 'uses' => 'HoraController@create']);
+    Route::put('api/hora/edit', ['as' => 'person_edit', 'uses' => 'HoraController@edit']);
+    Route::post('api/hora/destroy', ['as' => 'person_destroy', 'uses' => 'HoraController@destroy']);
+    Route::get('api/hora/search/{q?}', ['as' => 'person_search', 'uses' => 'HoraController@search']);
+    Route::get('api/hora/find/{id}', ['as' => 'person_find', 'uses' => 'HoraController@find']);
+    Route::get('api/hora/select','HoraController@select');
+    Route::get('api/hora/search/{a?}/{b?}/{c?}',['as'=>'person_search', 'uses'=>'HoraController@searchHora']);
 //END CATEGORIAS ROUTES
