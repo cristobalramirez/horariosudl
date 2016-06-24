@@ -172,6 +172,9 @@
               </ul>
             </li>
             @endif
+            @if($role == 1|| $role == 2|| $role == 3)
+            <li class=""><a href="/disponibilidadDocente" ><i class="fa fa-users"></i>Disponibilidad Docente</a></li>
+            @endif
 
               
      

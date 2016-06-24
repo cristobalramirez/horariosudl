@@ -16,7 +16,7 @@ class CreateDocenteTable extends Migration
             $table->increments('id');
             $table->string('nombres',60);
             $table->string('apellidos',60); //Identificador único para este producto.
-            $table->string('dni',8)->unique(); 
+            $table->string('dni',8)->unique()->nullable(); 
             $table->timestamp('fechanacimiento')->nullable();
             $table->timestamp('fechaAlta')->nullable();
             $table->timestamp('fechabaja')->nullable();

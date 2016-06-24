@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlanEstudiantilTableSeeder::class);
         $this->call(UbigeoTableSeeder::class);
         $this->call(CursoTableSeeder::class);
-        
+        $this->call(HoraTableSeeder::class);
         
         Model::reguard();
     }

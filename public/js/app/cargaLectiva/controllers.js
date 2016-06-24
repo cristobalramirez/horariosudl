@@ -181,12 +181,13 @@
                                     crudService.search('carga',$scope.idcurso,1).then(function (data) {
                                         $scope.cursosSeparados = data.data;
                                     });
-                                    crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,1).then(function (data){
+                                    crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,$scope.semestre_id).then(function (data){
                                         $scope.cargasLectivas = data.data;
                                     });
                                     $scope.docenteSelected=undefined;
                                     $scope.cargaLectiva={};
                                     $scope.curso={};
+                                    $scope.banderaAgregarCarga = false; 
                                 }else{
                                    $scope.errors =data;
                                 }
@@ -210,12 +211,12 @@
                                 crudService.search('carga',$scope.idcurso,1).then(function (data) {
                                     $scope.cursosSeparados = data.data;
                                 });
-                                crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,1).then(function (data){
+                                crudService.searchCurso('carga',$scope.ciclo,$scope.plan_id,$scope.semestre_id).then(function (data){
                                     $scope.cargasLectivas = data.data;
                                 });
-                                if ($scope.cursosSeparados.length==1) {
+                                //if ($scope.cursosSeparados.length==1) {
                                     $scope.banderaAgregarCarga = false; 
-                                }
+                                //}
                                 $scope.docenteSelected=undefined;
                                 $scope.cargaLectiva={};
                                 $scope.curso={};
