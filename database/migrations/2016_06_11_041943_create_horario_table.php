@@ -18,11 +18,9 @@ class CreateHorarioTable extends Migration
             $table->integer('cargaLectiva_id')->unsigned()->nullable();
             $table->integer('ambiente_id')->unsigned()->nullable();
             $table->integer('horaInicio_id')->unsigned()->nullable();
-            $table->integer('horaFin_id')->unsigned()->nullable();
             $table->foreign('cargaLectiva_id')->references('id')->on('cargaLectiva');
             $table->foreign('ambiente_id')->references('id')->on('ambiente');
             $table->foreign('horaInicio_id')->references('id')->on('hora');
-            $table->foreign('horaFin_id')->references('id')->on('hora');
             $table->timestamps();
         });
     }
